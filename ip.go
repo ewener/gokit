@@ -1,12 +1,12 @@
-package backend
+package gokit
 
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"net"
 	"net/http"
-	"fmt"
 	"strings"
 )
 

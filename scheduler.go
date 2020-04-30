@@ -1,4 +1,4 @@
-package backend
+package gokit
 
 import (
 	"time"
@@ -12,7 +12,7 @@ import (
 func Schedule(do func(), interval time.Duration, after ...func()) chan<- struct{} {
 	ticker := time.NewTicker(interval)
 	stopChan := make(chan struct{})
-	SafetyRun(func() {
+	go func() {
 		defer ticker.Stop()
 	LOOP:
 		for {
@@ -29,7 +29,7 @@ func Schedule(do func(), interval time.Duration, after ...func()) chan<- struct{
 				break LOOP
 			}
 		}
-	})
+	}()
 	return stopChan
 }
 
