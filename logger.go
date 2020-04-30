@@ -1,4 +1,4 @@
-package logger
+package gokit
 
 import (
 	"github.com/sirupsen/logrus"
@@ -10,8 +10,8 @@ type CustomLogger struct {
 	*logrus.Logger
 }
 
-func NewCustomLogger(Prefix string, logDir string) *CustomLogger {
-	return &CustomLogger{Prefix: "[" + Prefix + "] ", LogDir: logDir, Logger: logrus.New()}
+func NewCustomLogger(prefix string, logDir string) *CustomLogger {
+	return &CustomLogger{Prefix: "[" + prefix + "] ", LogDir: logDir, Logger: logrus.New()}
 }
 
 func (c *CustomLogger) Print(message ...interface{}) {
