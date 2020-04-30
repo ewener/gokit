@@ -2,6 +2,7 @@ package gokit
 
 import (
 	"github.com/sirupsen/logrus"
+	"io"
 )
 
 var globalLogger = logrus.New()
@@ -10,6 +11,12 @@ type CustomLogger struct {
 	Prefix string
 	LogDir string
 	*logrus.Logger
+}
+
+func InitLogger(formatter logrus.Formatter, hook logrus.Hook, output io.Writer) {
+	globalLogger.SetOutput(output)
+	globalLogger.SetFormatter(formatter)
+	globalLogger.AddHook(hook)
 }
 
 func NewCustomLogger(prefix string, logDir string) *CustomLogger {
