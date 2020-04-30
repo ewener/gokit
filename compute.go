@@ -1,10 +1,4 @@
-/******************************************************
-# DESC       : 数值转换与计算
-# MAINTAINER : yamei
-# EMAIL      : daixw@ecpark.cn
-# DATE       : 2019/12/5
-******************************************************/
-package backend
+package gokit
 
 import "encoding/binary"
 

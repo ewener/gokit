@@ -1,10 +1,4 @@
-/******************************************************
-# DESC       : 公共类型、常量、方法、接口等
-# MAINTAINER : yamei
-# EMAIL      : daixw@ecpark.cn
-# DATE       : 2019/12/5
-******************************************************/
-package backend
+package gokit
 
 import (
 	bytes2 "bytes"
