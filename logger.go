@@ -9,7 +9,6 @@ var globalLogger = logrus.New()
 
 type CustomLogger struct {
 	Prefix string
-	LogDir string
 	*logrus.Logger
 }
 
@@ -19,8 +18,8 @@ func InitLogger(formatter logrus.Formatter, hook logrus.Hook, output io.Writer) 
 	globalLogger.AddHook(hook)
 }
 
-func NewCustomLogger(prefix string, logDir string) *CustomLogger {
-	return &CustomLogger{Prefix: "[" + prefix + "] ", LogDir: logDir, Logger: globalLogger}
+func NewCustomLogger(prefix string) *CustomLogger {
+	return &CustomLogger{Prefix: "[" + prefix + "] ", Logger: globalLogger}
 }
 
 func (c *CustomLogger) SetPrefix(prefix string) {
