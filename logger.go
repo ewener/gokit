@@ -14,6 +14,10 @@ func NewCustomLogger(prefix string, logDir string) *CustomLogger {
 	return &CustomLogger{Prefix: "[" + prefix + "] ", LogDir: logDir, Logger: logrus.New()}
 }
 
+func (c *CustomLogger) SetPrefix(prefix string) {
+	c.Prefix = "[" + prefix + "] "
+}
+
 func (c *CustomLogger) Print(message ...interface{}) {
 	c.Logger.Print(c.Prefix, message)
 }
