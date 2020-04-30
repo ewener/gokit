@@ -2,23 +2,23 @@ package gokit
 
 import (
 	"github.com/sirupsen/logrus"
-	"io"
+	"sync"
 )
 
 var globalLogger = logrus.New()
+var initOnce = &sync.Once{}
 
 type CustomLogger struct {
 	Prefix string
 	*logrus.Logger
 }
 
-func InitLogger(formatter logrus.Formatter, hook logrus.Hook, output io.Writer) {
-	globalLogger.SetOutput(output)
-	globalLogger.SetFormatter(formatter)
-	globalLogger.AddHook(hook)
-}
-
-func NewCustomLogger(prefix string) *CustomLogger {
+func NewCustomLogger(prefix string, initFunc ...func(logger *logrus.Logger)) *CustomLogger {
+	initOnce.Do(func() {
+		if len(initFunc) > 0 {
+			initFunc[0](globalLogger)
+		}
+	})
 	return &CustomLogger{Prefix: "[" + prefix + "] ", Logger: globalLogger}
 }
 
