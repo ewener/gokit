@@ -176,3 +176,11 @@ func WithinDays(now, compare time.Time, differ int) (in bool) {
 	}
 	return
 }
+
+func FloatDataParse(data float64) float64 {
+	dataForShow, err := strconv.ParseFloat(strconv.FormatFloat(data, 'f', 2, 32), 64)
+	if err != nil {
+		return 0.00
+	}
+	return dataForShow
+}
