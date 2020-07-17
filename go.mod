@@ -1,4 +1,4 @@
-module github.com/ewener/v2/gokit
+module github.com/ewener/gokit
 
 go 1.14
 
