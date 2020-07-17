@@ -1,9 +1,5 @@
-module github.com/ewener/gokit
+module github.com/ewener/v2/gokit
 
 go 1.14
 
-require (
-	github.com/konsorten/go-windows-terminal-sequences v1.0.3 // indirect
-	github.com/sirupsen/logrus v1.5.0
-	golang.org/x/sys v0.0.0-20200430082407-1f5687305801 // indirect
-)
+require go.uber.org/zap v1.15.0
