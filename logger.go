@@ -7,7 +7,6 @@ import (
 )
 
 var (
-	logLevel      = zap.NewAtomicLevelAt(zapcore.InfoLevel)
 	defaultLogger *ZapLogger
 	once          sync.Once
 )
@@ -30,12 +29,6 @@ func InitLogger(log *zap.Logger) {
 // new logger
 func NewCustomLogger(prefix string) *CustomLogger {
 	return &CustomLogger{prefix: "[" + prefix + "] "}
-}
-
-func SetLevel(level string) {
-	var lvl zapcore.Level
-	lvl.Set(level)
-	logLevel.SetLevel(lvl)
 }
 
 // print
