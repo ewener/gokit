@@ -90,26 +90,26 @@ func (l *ZapLogger) Panicf(format string, args ...interface{}) {
 	l.sugarLogger.Panicf(format, args...)
 }
 
-func (l *ZapLogger) DebugWithFields(msg string, fields ...zap.Field) {
+func (l *ZapLogger) DebugFields(msg string, fields ...zap.Field) {
 	l.logger.Debug(msg, fields...)
 }
 
-func (l *ZapLogger) InfoWithFields(msg string, fields ...zap.Field) {
+func (l *ZapLogger) InfoFields(msg string, fields ...zap.Field) {
 	l.logger.Info(msg, fields...)
 }
 
-func (l *ZapLogger) WarnWithFields(msg string, fields ...zap.Field) {
+func (l *ZapLogger) WarnFields(msg string, fields ...zap.Field) {
 	l.logger.Warn(msg, fields...)
 }
 
-func (l *ZapLogger) ErrorWithFields(msg string, fields ...zap.Field) {
+func (l *ZapLogger) ErrorFields(msg string, fields ...zap.Field) {
 	l.logger.Error(msg, fields...)
 }
 
-func (l *ZapLogger) PanicWithFields(msg string, fields ...zap.Field) {
+func (l *ZapLogger) PanicFields(msg string, fields ...zap.Field) {
 	l.logger.Panic(msg, fields...)
 }
 
-func (l *ZapLogger) FatalWithFields(msg string, fields ...zap.Field) {
+func (l *ZapLogger) FatalFields(msg string, fields ...zap.Field) {
 	l.logger.Fatal(msg, fields...)
 }
