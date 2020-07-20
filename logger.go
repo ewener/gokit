@@ -6,8 +6,7 @@ import (
 )
 
 var (
-	defaultLogger = &ZapLogger{logger: zap.L(), sugarLogger: zap.S()}
-	once          sync.Once
+	once sync.Once
 )
 
 type (
@@ -29,7 +28,9 @@ func InitLogger(log *zap.Logger) {
 
 // new logger
 func NewCustomLogger(prefix string) *CustomLogger {
-	return &CustomLogger{Prefix: "[" + prefix + "] ", ZapLogger: defaultLogger}
+	return &CustomLogger{Prefix: "[" + prefix + "] ", ZapLogger: &ZapLogger{
+		logger: zap.L(), sugarLogger: zap.S(),
+	}}
 }
 
 // print
