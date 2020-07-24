@@ -10,20 +10,13 @@ var (
 )
 
 type (
-	CustomLogger struct {
-		Prefix string
-	}
+	CustomLogger struct{}
 )
 
 func InitLogger(log *zap.Logger) {
 	once.Do(func() {
 		zap.ReplaceGlobals(log)
 	})
-}
-
-// new logger
-func NewCustomLogger(prefix string) *CustomLogger {
-	return &CustomLogger{Prefix: "[" + prefix + "] "}
 }
 
 // print
