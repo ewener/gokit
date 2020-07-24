@@ -10,7 +10,9 @@ var (
 )
 
 type (
-	CustomLogger struct{}
+	CustomLogger struct {
+		Prefix string
+	}
 )
 
 func InitLogger(log *zap.Logger) {
@@ -19,66 +21,75 @@ func InitLogger(log *zap.Logger) {
 	})
 }
 
+// new logger
+func NewCustomLogger(prefix string) *CustomLogger {
+	return &CustomLogger{Prefix: "[" + prefix + "] "}
+}
+
+func Append(prefix string, args ...interface{}) []interface{} {
+	return append([]interface{}{prefix}, args...)
+}
+
 // print
 func (c *CustomLogger) Print(args ...interface{}) {
-	zap.S().Info(args...)
+	zap.S().Info(Append(c.Prefix, args...)...)
 }
 
 // printf
 func (c *CustomLogger) Printf(format string, v ...interface{}) {
-	zap.S().Infof(format, v)
+	zap.S().Infof(c.Prefix+format, v)
 }
 
 // Debug ZapLogger
 func (c *CustomLogger) Debug(args ...interface{}) {
-	zap.S().Debug(args...)
+	zap.S().Debug(Append(c.Prefix, args...)...)
 }
 
 // Info logger
 func (c *CustomLogger) Info(args ...interface{}) {
-	zap.S().Info(args...)
+	zap.S().Info(Append(c.Prefix, args...)...)
 }
 
 // Warn logger
 func (c *CustomLogger) Warn(args ...interface{}) {
-	zap.S().Warn(args...)
+	zap.S().Warn(Append(c.Prefix, args...)...)
 }
 
 // Error logger
 func (c *CustomLogger) Error(args ...interface{}) {
-	zap.S().Error(args...)
+	zap.S().Error(Append(c.Prefix, args...)...)
 }
 
 func (c *CustomLogger) Fatal(args ...interface{}) {
-	zap.S().Fatal(args...)
+	zap.S().Fatal(Append(c.Prefix, args...)...)
 }
 
 func (c *CustomLogger) Debugf(format string, args ...interface{}) {
-	zap.S().Debugf(format, args...)
+	zap.S().Debugf(c.Prefix+format, args...)
 }
 
 func (c *CustomLogger) Infof(format string, args ...interface{}) {
-	zap.S().Infof(format, args...)
+	zap.S().Infof(c.Prefix+format, args...)
 }
 
 func (c *CustomLogger) Warnf(format string, args ...interface{}) {
-	zap.S().Warnf(format, args...)
+	zap.S().Warnf(c.Prefix+format, args...)
 }
 
 func (c *CustomLogger) Errorf(format string, args ...interface{}) {
-	zap.S().Errorf(format, args...)
+	zap.S().Errorf(c.Prefix+format, args...)
 }
 
 func (c *CustomLogger) Fatalf(format string, args ...interface{}) {
-	zap.S().Fatalf(format, args...)
+	zap.S().Fatalf(c.Prefix+format, args...)
 }
 
 func (c *CustomLogger) Panicf(format string, args ...interface{}) {
-	zap.S().Panicf(format, args...)
+	zap.S().Panicf(c.Prefix+format, args...)
 }
 
 func (c *CustomLogger) DebugFields(msg string, fields ...zap.Field) {
-	zap.L().Debug(msg, fields...)
+	zap.L().Debug(c.Prefix+msg, fields...)
 }
 
 func (c *CustomLogger) InfoFields(msg string, fields ...zap.Field) {
