@@ -82,21 +82,21 @@ func (c *CustomLogger) DebugFields(msg string, fields ...zap.Field) {
 }
 
 func (c *CustomLogger) InfoFields(msg string, fields ...zap.Field) {
-	zap.L().Info(msg, fields...)
+	zap.L().Info(c.Prefix+msg, fields...)
 }
 
 func (c *CustomLogger) WarnFields(msg string, fields ...zap.Field) {
-	zap.L().Warn(msg, fields...)
+	zap.L().Warn(c.Prefix+msg, fields...)
 }
 
 func (c *CustomLogger) ErrorFields(msg string, fields ...zap.Field) {
-	zap.L().Error(msg, fields...)
+	zap.L().Error(c.Prefix+msg, fields...)
 }
 
 func (c *CustomLogger) PanicFields(msg string, fields ...zap.Field) {
-	zap.L().Panic(msg, fields...)
+	zap.L().Panic(c.Prefix+msg, fields...)
 }
 
 func (c *CustomLogger) FatalFields(msg string, fields ...zap.Field) {
-	zap.L().Fatal(msg, fields...)
+	zap.L().Fatal(c.Prefix+msg, fields...)
 }
