@@ -37,7 +37,7 @@ func panicLog(info string) {
 		return
 	}
 	now := time.Now()
-	logPath := filepath.Join(dir, "crash."+now.Format("20060102")+".log")
+	logPath := filepath.Join(dir, "crash.log")
 	file, er := os.OpenFile(logPath, os.O_RDWR|os.O_CREATE|os.O_APPEND, os.ModePerm)
 	if er == nil {
 		defer file.Close()
