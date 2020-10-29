@@ -1,8 +1,9 @@
 package gokit
 
 import (
-	"go.uber.org/zap"
 	"sync"
+
+	"go.uber.org/zap"
 )
 
 var (
@@ -23,7 +24,11 @@ func InitLogger(log *zap.Logger) {
 
 // new logger
 func NewCustomLogger(prefix string) *CustomLogger {
-	return &CustomLogger{Prefix: "[" + prefix + "] "}
+	p := prefix
+	if p != "" {
+		p = "[" + prefix + "] "
+	}
+	return &CustomLogger{Prefix: p}
 }
 
 func Append(prefix string, args ...interface{}) []interface{} {
